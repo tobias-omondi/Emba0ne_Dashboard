@@ -22,6 +22,11 @@ const OverViewPage = () => {
           <StatCard name = "comments" icon = {MessageCircleHeartIcon} value = "500+" color = '#10B981' />
         </motion.div>
 
+        {/* Charts */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+
+        </div>
+
       </main>
     </div>
   )
