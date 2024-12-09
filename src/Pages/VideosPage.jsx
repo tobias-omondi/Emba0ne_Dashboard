@@ -5,6 +5,7 @@ import StatCard from '../components/common/StatCard'
 
 import { ImageDownIcon, MessageCircleHeartIcon, VideoOffIcon, Zap } from 'lucide-react'
 import VideosTable from '../components/Products/VideosTable'
+import CategoryDistribution from '../components/Overview/CategoryDistribution'
 
 const VideosPage = () => {
   return (
@@ -25,6 +26,10 @@ const VideosPage = () => {
 
         {/* videos Table */}
         <VideosTable />
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+            {/* <SalesChanelChart /> */}
+            <CategoryDistribution/>
+        </div>
     </main>
     </div>
 

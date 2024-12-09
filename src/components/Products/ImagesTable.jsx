@@ -1,4 +1,4 @@
-import { Edit, Search, Trash2 } from 'lucide-react';
+import { Edit, Search, Trash2, PlusCircle, Save } from 'lucide-react';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -12,16 +12,35 @@ const IMAGE_DATA = [
 const ImagesTable = () => {
   const [searchItem, setSearchItem] = useState('');
   const [filteredImages, setFilteredImages] = useState(IMAGE_DATA);
+  const [images, setImages] = useState(IMAGE_DATA);
+  const [newImage, setNewImage] = useState({ name: '', url: '', posted_date: '' });
+  const [isAdding, setIsAdding] = useState(false);
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
     setSearchItem(term);
 
-    // Filter images based on the search term in name or url
-    const filtered = IMAGE_DATA.filter(
+    const filtered = images.filter(
       (image) => image.name.toLowerCase().includes(term) || image.url.toLowerCase().includes(term)
     );
     setFilteredImages(filtered);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewImage({ ...newImage, [name]: value });
+  };
+
+  const addImage = () => {
+    if (newImage.name && newImage.url && newImage.posted_date) {
+      const newId = images.length ? images[images.length - 1].id + 1 : 1;
+      const imageToAdd = { ...newImage, id: newId };
+      const updatedImages = [...images, imageToAdd];
+      setImages(updatedImages);
+      setFilteredImages(updatedImages);
+      setNewImage({ name: '', url: '', posted_date: '' });
+      setIsAdding(false);
+    }
   };
 
   return (
@@ -33,7 +52,7 @@ const ImagesTable = () => {
     >
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <h2 className="text-xl font-semibold text-gray-700">Image List</h2>
-        <div className="relative w-full sm:w-1/3 mt-4 sm:mt-0"> {/* Full width on small screens, limited width on larger */}
+        <div className="relative w-full sm:w-1/3 mt-4 sm:mt-0">
           <input
             type="text"
             placeholder="Search Images ..."
@@ -74,6 +93,53 @@ const ImagesTable = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Add Image Section (at the bottom of the table) */}
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4 hover:bg-blue-600 flex items-center mt-5"
+        onClick={() => setIsAdding(!isAdding)}
+      >
+        <PlusCircle size={18} className="mr-2" />
+        {isAdding ? 'Cancel' : 'Add Image'}
+      </button>
+
+      {isAdding && (
+        <div className="bg-gray-400 p-4 rounded-md mb-4">
+          <h3 className="text-lg font-semibold mb-2">Add New Image</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3">
+            <input
+              type="text"
+              name="name"
+              placeholder="Image Name"
+              value={newImage.name}
+              onChange={handleInputChange}
+              className="p-2 border rounded px-2 "
+            />
+            <input
+              type="text"
+              name="url"
+              placeholder="Image URL"
+              value={newImage.url}
+              onChange={handleInputChange}
+              className="p-2 border rounded"
+            />
+            <input
+              type="date"
+              name="posted_date"
+              value={newImage.posted_date}
+              onChange={handleInputChange}
+              className="p-2 border rounded"
+            />
+          </div>
+          <button
+            className="mt-4 bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 flex items-center"
+            onClick={addImage}
+          >
+            <Save size={18} className="mr-2" />
+            Save Image
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 };
