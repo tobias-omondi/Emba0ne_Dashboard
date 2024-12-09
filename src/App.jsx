@@ -4,7 +4,7 @@ import AdminPage from "./Pages/AdminPage";
 import SideBar from "./components/SideBar";
 import ImagesPage from "./Pages/ImagesPage";
 import VideosPage from "./Pages/VideosPage";
-import Setting from "./Pages/Setting";
+import SettingOverviewPage from "./Pages/SettingOverviewPage"
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/admin" element = {<AdminPage/>} />
           <Route path="/images" element = {<ImagesPage />} />
           <Route path="/videos" element = {<VideosPage />} />
-          <Route path="/settings" element = {<Setting />} />
+          <Route path="/settings" element = {<SettingOverviewPage/>} />
         </Routes>
       </div>
     </>
