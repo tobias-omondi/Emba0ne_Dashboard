@@ -3,6 +3,9 @@ import Header from '../components/common/Header'
 import { motion } from 'framer-motion'
 import StatCard from '../components/common/StatCard'
 import { ImageDownIcon, MessageCircleHeartIcon, VideoOffIcon, Zap } from 'lucide-react'
+import SalesOverview from '../components/Overview/SalesOverview'
+import CategoryDistribution from '../components/Overview/CategoryDistribution'
+import SalesChanelChart from '../components/Overview/SalesChanelChart'
 
 const OverViewPage = () => {
   return (
@@ -24,7 +27,9 @@ const OverViewPage = () => {
 
         {/* Charts */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-
+          <SalesOverview />
+          <CategoryDistribution />
+          <SalesChanelChart/>
         </div>
 
       </main>
