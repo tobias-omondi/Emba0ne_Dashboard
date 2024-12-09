@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import OverViewPage from "./Pages/OverViewPage";
 import AdminPage from "./Pages/AdminPage";
 import SideBar from "./components/SideBar";
+import ImagesPage from "./Pages/ImagesPage";
+import VideosPage from "./Pages/VideosPage";
+import Setting from "./Pages/Setting";
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Routes>
           <Route path="/" element = {<OverViewPage/>} />
           <Route path="/admin" element = {<AdminPage/>} />
+          <Route path="/images" element = {<ImagesPage />} />
+          <Route path="/videos" element = {<VideosPage />} />
+          <Route path="/settings" element = {<Setting />} />
         </Routes>
       </div>
     </>

@@ -1,15 +1,15 @@
 import React from 'react'
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 import Header from '../components/common/Header'
 import StatCard from '../components/common/StatCard'
 
 import { ImageDownIcon, MessageCircleHeartIcon, VideoOffIcon, Zap } from 'lucide-react'
-import AdminTable from '../components/Products/AdminTable';
+import VideosTable from '../components/Products/VideosTable'
 
-const AdminPage = () => {
+const VideosPage = () => {
   return (
     <div className=' flex-1 overflow-auto relative z-10'>
-    <Header tittle="Images" />
+    <Header tittle="Videos" />
     <main className='max-w-7xl mx-auto py-6 lg:px-8'>
         {/* Stats */}
         <motion.div
@@ -23,12 +23,12 @@ const AdminPage = () => {
           <StatCard name = "comments" icon = {MessageCircleHeartIcon} value = "500+" color = '#10B981' />
         </motion.div>
 
-        {/* AdminTable */}
-        <AdminTable />
+        {/* videos Table */}
+        <VideosTable />
     </main>
     </div>
 
   )
 }
 
-export default AdminPage;
+export default VideosPage

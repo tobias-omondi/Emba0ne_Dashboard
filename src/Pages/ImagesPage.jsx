@@ -4,9 +4,11 @@ import Header from '../components/common/Header'
 import StatCard from '../components/common/StatCard'
 
 import { ImageDownIcon, MessageCircleHeartIcon, VideoOffIcon, Zap } from 'lucide-react'
-import AdminTable from '../components/Products/AdminTable';
+import ImagesTable from '../components/Products/ImagesTable';
+import SalesChanelChart from '../components/Overview/SalesChanelChart';
+import CategoryDistribution from '../components/Overview/CategoryDistribution';
 
-const AdminPage = () => {
+const ImagesPage = () => {
   return (
     <div className=' flex-1 overflow-auto relative z-10'>
     <Header tittle="Images" />
@@ -23,12 +25,18 @@ const AdminPage = () => {
           <StatCard name = "comments" icon = {MessageCircleHeartIcon} value = "500+" color = '#10B981' />
         </motion.div>
 
-        {/* AdminTable */}
-        <AdminTable />
+        {/* images table */}
+        <ImagesTable />
+
+        {/* charts */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+            {/* <SalesChanelChart /> */}
+            <CategoryDistribution />
+        </div>
     </main>
     </div>
 
   )
 }
 
-export default AdminPage;
+export default ImagesPage
